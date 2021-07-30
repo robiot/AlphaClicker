@@ -129,9 +129,6 @@ namespace AlphaClicker
             Keybinds.key2 = key2;
             Keybinds.keyBinding = keyBox.Text;
 
-            MessageBox.Show(Keybinds.key1.ToString());
-            MessageBox.Show(Keybinds.key2.ToString());
-
             ((MainWindow)this.Owner).loadKeybind();
             Close();
         }
