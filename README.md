@@ -24,7 +24,8 @@ Alpha Clicker is a autoclicker for Windows with a **modern user interface**. :ar
 :cyclone: Why Alpha Clicker?
 ------------------
 <img src="https://raw.githubusercontent.com/robiot/AlphaClicker/main/.github/Images/showcase.gif" />
-
+ 
+ - It is open source, unlike many other autoclickers
 
 
 ### :art: Design:
