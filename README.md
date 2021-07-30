@@ -1,7 +1,7 @@
 
 <div align="center" >
   <br>
-  <img src="https://media.discordapp.net/attachments/857753170745491466/870724260954513498/banner.png">
+  <img src="https://raw.githubusercontent.com/robiot/AlphaClicker/main/.github/Images/banner.png">
   <br>
   
   <img alt="GitHub All Releases" src="https://img.shields.io/github/contributors/robiot/AlphaClicker?label=Contributors">
@@ -17,20 +17,20 @@
 
 :thinking: What is this?
 ------------------
-<img src="https://media.discordapp.net/attachments/857753170745491466/870718077849968650/unknown.png" />
+<img src="https://raw.githubusercontent.com/robiot/AlphaClicker/main/.github/Images/design-example.png" />
 
 Alpha Clicker is a autoclicker for Windows with a **modern user interface**. :art:
 
 :cyclone: Why Alpha Clicker?
 ------------------
-<img src="https://i.gyazo.com/284200a76ddf5eb15dcf67960e02d74b.gif" />
+<img src="https://raw.githubusercontent.com/robiot/AlphaClicker/main/.github/Images/showcase.gif" />
 
 
 
 ### :art: Design:
 Ever got tired of the old design of your autoclicker. This is for you. \
 Just you search "Autoclicker" and you will get a bunch of ancient autoclickers (which work, but looks anicent).
-<img src="https://media.discordapp.net/attachments/857753170745491466/870744993432764436/unknown.png" width=500/>
+<img src="https://raw.githubusercontent.com/robiot/AlphaClicker/main/.github/Images/otherclickers.png" width=500/>
 
 ### :gear: Functionality:
 It basically works just like any other autoclicker.
