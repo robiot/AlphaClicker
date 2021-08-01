@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Registry.cs" />
     <Page Include="ChangeHotkey.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

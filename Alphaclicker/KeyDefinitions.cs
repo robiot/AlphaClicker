@@ -1,7 +1,10 @@
 ﻿namespace AlphaClicker
 {
+   
     public enum VK : int
     {
+        // Commented out because it's not used
+        /*
         VK_LBUTTON = 0x01,
         VK_RBUTTON = 0x02,
         VK_CANCEL = 0x03,
@@ -23,7 +26,7 @@
         VK_CAPITAL = 0x14,
         //
         VK_KANA = 0x15,
-        VK_HANGEUL = 0x15, /* old name - should be here for compatibility */
+        VK_HANGEUL = 0x15, // old name - should be here for compatibility
         VK_HANGUL = 0x15,
         VK_JUNJA = 0x17,
         VK_FINAL = 0x18,
@@ -81,7 +84,9 @@
         VK_F3 = 0x72,
         VK_F4 = 0x73,
         VK_F5 = 0x74,
+        */
         VK_F6 = 0x75,
+        /*
         VK_F7 = 0x76,
         VK_F8 = 0x77,
         VK_F9 = 0x78,
@@ -186,7 +191,7 @@
         VK_ZOOM = 0xFB,
         VK_NONAME = 0xFC,
         VK_PA1 = 0xFD,
-        VK_OEM_CLEAR = 0xFE
+        VK_OEM_CLEAR = 0xFE*/
     }
 
     public enum MOUSEEVENTF : uint
