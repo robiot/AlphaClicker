@@ -1,21 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AlphaClicker
 {
@@ -91,6 +75,7 @@ namespace AlphaClicker
                             key2 = i;
                             break;
                         }
+                        /* If function key */
                         else if (i >= 112 && i <= 123)
                         {
                             keyBox.AppendText(CodeToSpecialKey(i));
@@ -98,7 +83,7 @@ namespace AlphaClicker
                             key2 = i;
                             break;
                         }
-
+                        /* If any extra keys (shift, ctrl, alt) */
                         else if (i >= 16 && i <= 18)
                         {
                             if (hasSpecKey == false)
@@ -128,8 +113,9 @@ namespace AlphaClicker
             Keybinds.key1 = key1;
             Keybinds.key2 = key2;
             Keybinds.keyBinding = keyBox.Text;
+            AlphaRegistry.SetKeybindValues();
 
-            ((MainWindow)this.Owner).loadKeybind();
+            ((MainWindow)this.Owner).LoadKeybind();
             Close();
         }
 
@@ -152,8 +138,9 @@ namespace AlphaClicker
 
     public class Keybinds
     {
+        // Default keybinds if reg fail
         public static int key1 = -1;
         public static int key2 = (int)VK.VK_F6;
-        public static string keyBinding = "F6";
+        public static string keyBinding = "F6"; 
     }
 }

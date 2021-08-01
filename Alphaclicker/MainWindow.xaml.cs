@@ -1,21 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace AlphaClicker
 {
@@ -29,25 +20,25 @@ namespace AlphaClicker
             InitializeComponent();
         }
         
-        public void loadKeybind()
+        public void LoadKeybind()
         {
             startBtn.Content = $"Start ({Keybinds.keyBinding})";
             stopBtn.Content = $"Stop ({Keybinds.keyBinding})";
         }
 
-        private void cerror(string errormessage)
+        private void Cerror(string errormessage)
         {
-            toggleClick();
+            ToggleClick();
             MessageBox.Show(errormessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-
-        private int toInt(string number)
+        
+        private int ToInt(string number)
         {
             return Int32.Parse((number == "") ? "0" : number);
         }
 
 
-        private void fadeButtonColor(Button btn, string hex)
+        private void FadeButtonColor(Button btn, string hex)
         {
             ColorAnimation animation =
                new ColorAnimation(
@@ -57,7 +48,7 @@ namespace AlphaClicker
             btn.Background.BeginAnimation(SolidColorBrush.ColorProperty, animation);
         }
 
-        private void toggleClick()
+        private void ToggleClick()
         {
             string startEnabled = "#1494e3";
             string startDisabled = "#084466";
@@ -68,18 +59,18 @@ namespace AlphaClicker
 
             if (startBtn.IsEnabled)
             {
-                fadeButtonColor(startBtn, startDisabled);
-                fadeButtonColor(stopBtn, stopEnabled);
+                FadeButtonColor(startBtn, startDisabled);
+                FadeButtonColor(stopBtn, stopEnabled);
                 startBtn.IsEnabled = false;
                 stopBtn.IsEnabled = true;
 
-                Thread clickhandler = new Thread(clickHandler);
+                Thread clickhandler = new Thread(ClickHandler);
                 clickhandler.Start();
             }
             else
             {
-                fadeButtonColor(startBtn, startEnabled);
-                fadeButtonColor(stopBtn, stopDisabled);
+                FadeButtonColor(startBtn, startEnabled);
+                FadeButtonColor(stopBtn, stopDisabled);
 
                 startBtn.IsEnabled = true;
                 stopBtn.IsEnabled = false;
@@ -87,7 +78,7 @@ namespace AlphaClicker
         }
 
         public bool keyEnabled = true;
-        void keyHandler()
+        void KeyHandler()
         {
             while (true)
             {
@@ -99,7 +90,7 @@ namespace AlphaClicker
                         {
                             Dispatcher.Invoke((Action)(() =>
                             {
-                                toggleClick();
+                                ToggleClick();
                             }));
                         }
                     }
@@ -110,7 +101,7 @@ namespace AlphaClicker
                         {
                             Dispatcher.Invoke((Action)(() =>
                             {
-                                toggleClick();
+                                ToggleClick();
                             }));
                         }
                     }
@@ -120,7 +111,7 @@ namespace AlphaClicker
 
         }
 
-        void clickHandler()
+        void ClickHandler()
         {
             int sleep = 0;
             
@@ -138,16 +129,16 @@ namespace AlphaClicker
                 /* Grab Click Interval */
                 try
                 {                    
-                    sleep = toInt(millisecsBox.Text)
-                    + toInt(secondsBox.Text) * 1000
-                    + toInt(minsBox.Text) * 60000
-                    + toInt(hoursBox.Text) * 3600000;
+                    sleep = ToInt(millisecsBox.Text)
+                    + ToInt(secondsBox.Text) * 1000
+                    + ToInt(minsBox.Text) * 60000
+                    + ToInt(hoursBox.Text) * 3600000;
                     sleep = (sleep == 0) ? 1 : sleep;
                 }
 
                 catch (FormatException)
                 {
-                    cerror("Invalid Click Interval");
+                    Cerror("Invalid Click Interval");
                     return;
                 }
 
@@ -165,7 +156,7 @@ namespace AlphaClicker
                     }
                     catch (FormatException)
                     {
-                        cerror("Invalid Repeat Times Number");
+                        Cerror("Invalid Repeat Times Number");
                         return;
                     }
                 }
@@ -182,7 +173,7 @@ namespace AlphaClicker
                     }
                     catch (FormatException)
                     {
-                        cerror("Invalid Repeat Times Number");
+                        Cerror("Invalid Repeat Times Number");
                         return;
                     }
                 }
@@ -205,7 +196,7 @@ namespace AlphaClicker
                         {
                             Dispatcher.Invoke((Action)(() =>
                             {
-                                toggleClick();
+                                ToggleClick();
                             }));
                             break;
                         }
@@ -234,10 +225,12 @@ namespace AlphaClicker
 
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Thread keyhandler = new Thread(keyHandler);
+            Thread keyhandler = new Thread(KeyHandler);
             keyhandler.Start();
 
-            loadKeybind();
+            // Get Keybind Values From SOFTWARE\AlphaClicker
+            AlphaRegistry.GetKeybindValues();
+            LoadKeybind();
         }
 
         private void mainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -264,12 +257,12 @@ namespace AlphaClicker
 
         private void startBtn_Click(object sender, RoutedEventArgs e)
         {
-            toggleClick();
+            ToggleClick();
         }
 
         private void stopBtn_Click(object sender, RoutedEventArgs e)
         {
-            toggleClick();
+            ToggleClick();
         }
 
         private void toggleTopmostBtn_Click(object sender, RoutedEventArgs e)
