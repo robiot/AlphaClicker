@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Runtime.InteropServices;
+using System.Globalization;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,6 +34,7 @@ namespace AlphaClicker
         
         private int ToInt(string number)
         {
+            // Return int | Replace Empty With 0
             return Int32.Parse((number == "") ? "0" : number);
         }
 
@@ -114,7 +115,11 @@ namespace AlphaClicker
         void ClickHandler()
         {
             int sleep = 0;
-            
+
+            bool useRandomSleep = false;
+            int randnum1 = 0;
+            int randnum2 = 0;
+
             string mouseBtn = "";
             string clickType = "";
 
@@ -128,17 +133,32 @@ namespace AlphaClicker
             {
                 /* Grab Click Interval */
                 try
-                {                    
-                    sleep = ToInt(millisecsBox.Text)
-                    + ToInt(secondsBox.Text) * 1000
-                    + ToInt(minsBox.Text) * 60000
-                    + ToInt(hoursBox.Text) * 3600000;
-                    sleep = (sleep == 0) ? 1 : sleep;
+                {
+                    useRandomSleep = (bool)randomIntervalMode.IsChecked;
+                    if (useRandomSleep)
+                    {
+                        randnum1 = (int)(float.Parse(randomSecs1Box.Text,
+                                                CultureInfo.InvariantCulture.NumberFormat) * 1000);
+                        randnum2 = (int)(float.Parse(randomSecs2Box.Text,
+                                               CultureInfo.InvariantCulture.NumberFormat) * 1000);
+                        randnum1 = (randnum1 == 0) ? 1 : randnum1;
+                        randnum2 = (randnum2 == 0) ? 1 : randnum2;
+
+
+                    }
+                    else
+                    {
+                        sleep = ToInt(millisecsBox.Text)
+                        + ToInt(secondsBox.Text) * 1000
+                        + ToInt(minsBox.Text) * 60000
+                        + ToInt(hoursBox.Text) * 3600000;
+                        sleep = (sleep == 0) ? 1 : sleep;
+                    }
                 }
 
-                catch (FormatException)
+                catch (FormatException ex)
                 {
-                    Cerror("Invalid Click Interval");
+                    Cerror(ex.ToString());
                     return;
                 }
 
@@ -180,6 +200,8 @@ namespace AlphaClicker
             }));
 
             int repeatCount = 0;
+            Random rnd = new Random();
+
             while (true)
             {
                 bool doClick = false;
@@ -210,9 +232,17 @@ namespace AlphaClicker
                     else
                     {
                         WinApi.DoClick(mouseBtn, customCoordsChecked, customCoordsX, customCoordsY);
-                        Thread.Sleep(400);
+                        Thread.Sleep(300);
                         WinApi.DoClick(mouseBtn, customCoordsChecked, customCoordsX, customCoordsY);
                     }
+
+                    Dispatcher.Invoke((Action)(() =>
+                    {
+                        // Random sleep
+                        sleep = (!useRandomSleep) ? sleep : rnd.Next((randnum1 < randnum2) ? randnum1 : randnum2
+                                , (randnum1 > randnum2) ? randnum1 : randnum2);
+                        
+                    }));
 
                     Thread.Sleep(sleep);
                 }
@@ -255,6 +285,14 @@ namespace AlphaClicker
             this.WindowState = WindowState.Minimized;
         }
 
+        private void getCoordsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+            GetCursorPos win = new GetCursorPos();
+            win.Owner = this;
+            win.Show();
+        }
+
         private void startBtn_Click(object sender, RoutedEventArgs e)
         {
             ToggleClick();
@@ -263,6 +301,14 @@ namespace AlphaClicker
         private void stopBtn_Click(object sender, RoutedEventArgs e)
         {
             ToggleClick();
+        }
+
+        private void changeHotkeyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeHotkey win = new ChangeHotkey();
+            win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            win.Owner = this;
+            win.ShowDialog();
         }
 
         private void toggleTopmostBtn_Click(object sender, RoutedEventArgs e)
@@ -276,70 +322,6 @@ namespace AlphaClicker
             {
                 toggleTopmostBtn.Content = "Toggle Topmost (On)";
                 this.Topmost = true;
-            }
-        }
-
-        private void changeHotkeyBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeHotkey win = new ChangeHotkey();
-            win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            win.Owner = this;
-            win.ShowDialog();
-        }
-    }
-
-    public class WinApi
-    {
-        /*
-        [StructLayout(LayoutKind.Sequential)]
-        public struct POINT
-        {
-            public int X;
-            public int Y;
-
-            public static implicit operator Point(POINT point)
-            {
-                return new Point(point.X, point.Y);
-            }
-        }*/
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
-        public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
-
-        [DllImport("user32.dll")]
-        public static extern int GetAsyncKeyState(int character);
-
-        [DllImport("user32.dll")]
-        public static extern bool GetKeyboardState(byte[] lpKeyState);
-
-        [DllImport("user32.dll")]
-        public static extern int SetCursorPos(int x, int y);
-
-        // Get custom coords
-        //[DllImport("user32.dll")]
-        //public static extern bool GetCursorPos(out POINT lpPoint);
-
-        /*public static Point GetCursorPosition()
-        {
-            POINT lpPoint;
-            GetCursorPos(out lpPoint);
-            return lpPoint;
-        }*/
-
-        public static void DoClick(string button, bool useCustomCoords, int X, int Y)
-        {
-            if (useCustomCoords) { SetCursorPos(X, Y); }
-            switch (button)
-            {
-                case "Left":
-                    mouse_event((uint)MOUSEEVENTF.LEFTDOWN | (uint)MOUSEEVENTF.LEFTUP, 0, 0, 0, 0);
-                    break;
-                case "Right":
-                    mouse_event((uint)MOUSEEVENTF.RIGHTDOWN | (uint)MOUSEEVENTF.RIGHTUP, 0, 0, 0, 0);
-                    break;
-                case "Middle":
-                    mouse_event((uint)MOUSEEVENTF.MIDDLEDOWN | (uint)MOUSEEVENTF.MIDDLEUP, 0, 0, 0, 0);
-                    break;
             }
         }
     }

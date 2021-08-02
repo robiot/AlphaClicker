@@ -8,12 +8,13 @@
         ResizeMode="CanMinimize"
         WindowStyle="None"
         Title="Alpha Clicker"
-        Height="400" Width="410"
+        Height="430" Width="460"
         Background="{x:Null}"
         AllowsTransparency="True"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Loaded="mainWindow_Loaded"
-        Closing="mainWindow_Closing">
+        Closing="mainWindow_Closing"
+        Topmost="True">
 
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
@@ -163,7 +164,7 @@
             <Setter Property="FontSize" Value="14" />
             <Setter Property="Background" Value="lightgray" />
             <Setter Property="MaxLength" Value="5" />
-            
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
@@ -348,7 +349,7 @@
 
     </Window.Resources>
 
-
+    <!-- #202020 -->
     <Border Margin="10"
         CornerRadius="15" 
         Background="#F6F6F6" 
@@ -380,7 +381,7 @@
                     Grid.Row="0"
                     Height="20" Width="20"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Top" Margin="0,10,10,0" MouseLeftButtonDown="closeButton_MouseLeftButtonDown">
+                    VerticalAlignment="Center" Margin="0,0,10,0" MouseLeftButtonDown="closeButton_MouseLeftButtonDown">
                 <Ellipse.RenderTransform>
                     <ScaleTransform ScaleX="1.0" ScaleY="1.0" />
                 </Ellipse.RenderTransform>
@@ -391,7 +392,7 @@
                     Grid.Row="0"
                     Height="20" Width="20"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Top" Margin="0,10,40,0" MouseLeftButtonDown="minimizeButton_MouseLeftButtonDown">
+                    VerticalAlignment="Center" Margin="0,0,37,0" MouseLeftButtonDown="minimizeButton_MouseLeftButtonDown">
 
                 <Ellipse.RenderTransform>
                     <ScaleTransform ScaleX="1.0" ScaleY="1.0" />
@@ -408,49 +409,91 @@
                 </Grid.RowDefinitions>
 
                 <!-- 0 -->
+
+                <RadioButton x:Name="clickIntervalMode"
+                    Content=""
+                    Grid.Row="0"
+                    VerticalAlignment="Center"
+ 
+                    FontSize="13"
+                    IsChecked="true"
+                    GroupName="clickInterval"
+                    Margin="22,17,-12,66"/>
+
                 <TextBox x:Name="hoursBox" Text="0"
                     Width="50"
-                    Margin="10,20,330,20"/>
+                    Margin="56,0,334,59" VerticalAlignment="Bottom"/>
+
                 <Label Content="Hours"
                     FontSize="13"
                    
-                    VerticalAlignment="Center"
                     HorizontalAlignment="Right"
-                    Margin="0,22,289,22"/>
+                    Margin="0,0,292,59" Height="29" VerticalAlignment="Bottom"/>
                 <TextBox x:Name="minsBox" Text="0"
                     Width="50"
-                    Margin="108,20,232,20"/>
+                    Margin="154,0,236,59" VerticalAlignment="Bottom"/>
                 <Label Content="Mins"
                     FontSize="13"
-                   
-                    VerticalAlignment="Center"
+
                     HorizontalAlignment="Right"
-                    Margin="0,22,196,22"/>
+                    Margin="0,0,200,43" Height="46" VerticalAlignment="Bottom"/>
                 <TextBox x:Name="secondsBox" Text="0"
                     Width="50"
-                    Margin="202,20,138,20"/>
+                    Margin="248,0,142,59" VerticalAlignment="Bottom"/>
                 <Label Content="Secs"
                     FontSize="13"
                    
-                    VerticalAlignment="Center"
                     HorizontalAlignment="Right"
-                    Margin="0,22,105,22"/>
+                    Margin="0,0,109,43" Height="46" VerticalAlignment="Bottom"/>
                 <TextBox x:Name="millisecsBox" Text="100"
                     Width="50"
-                    Margin="293,20,47,20" AutomationProperties.IsRequiredForForm="True"/>
+                    Margin="339,0,51,59" AutomationProperties.IsRequiredForForm="True" Height="30" VerticalAlignment="Bottom"/>
                 <Label Content="Millis."
                     FontSize="13"
-                   
-                    VerticalAlignment="Center"
                     HorizontalAlignment="Right"
-                    Margin="0,22,7,22"/>
-                
+                    Margin="0,0,10,60" Height="27" VerticalAlignment="Bottom"/>
+
+                <RadioButton x:Name="randomIntervalMode"
+                    Content="Random Click Interval Between"
+                    Grid.Row="0"
+                    VerticalAlignment="Top"
+ 
+                    FontSize="13"
+                    GroupName="clickInterval"
+                    Margin="22,59,-12,0"/>
+                <TextBox x:Name="randomSecs1Box"
+                    Text="0.1"
+                    Width="50"
+                    Margin="248,52,142,0"
+                    MaxLength="0"
+                    VerticalAlignment="Top"/>
+
+                <Label Content="Secs"
+                    FontSize="13"
+                   
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Margin="0,54,109,0"/>
+
+                <TextBox x:Name="randomSecs2Box"
+                    Text="0.2"
+                    Width="50"
+                    Margin="339,52,51,0" 
+                    MaxLength="0"
+                    VerticalAlignment="Top"/>
+                <Label Content="Secs"
+                    FontSize="13"
+                   
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Margin="0,54,18,0"/>
+
                 <!-- 1 -->
                 <Label Content="Mouse Button"
                     VerticalAlignment="Center" 
                    
                     Grid.Row="1"
-                    Margin="0,4,287,50"
+                    Margin="0,4,326,49"
                     FontSize="13" HorizontalAlignment="Right" Width="93"/>
                 <ComboBox x:Name="mouseBtnCBOX" 
                     SelectedIndex="0"
@@ -460,7 +503,7 @@
                     HorizontalContentAlignment="Left"
                     VerticalAlignment="Center"
                     Grid.Row="1"
-                    ItemContainerStyle="{DynamicResource theComboBoxItem}" Margin="103,2,200,48">
+                    ItemContainerStyle="{DynamicResource theComboBoxItem}" Margin="114,2,225,48">
 
                     <ComboBoxItem>Left</ComboBoxItem>
                     <ComboBoxItem>Right</ComboBoxItem>
@@ -469,13 +512,11 @@
 
 
                 <Label Content="Click type"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Center" 
                    
                     Grid.Row="1"
-                    Margin="0,45,287,9"
-                    Width="93"
-                    FontSize="13"/>
+                    Margin="0,42,325,10"
+                    FontSize="13" HorizontalAlignment="Right" Width="93"/>
 
                 <ComboBox x:Name="clickTypeCBOX" 
                     SelectedIndex="0"
@@ -485,16 +526,16 @@
                     HorizontalContentAlignment="Left"
                     VerticalAlignment="Center"
                     Grid.Row="1"
-                    ItemContainerStyle="{DynamicResource theComboBoxItem}" Margin="103,43,200,7">
+                    ItemContainerStyle="{DynamicResource theComboBoxItem}" Margin="114,41,225,9">
 
                     <ComboBoxItem>Single</ComboBoxItem>
                     <ComboBoxItem>Double</ComboBoxItem>
                 </ComboBox>
 
-                <RadioButton x:Name="repeatTimesRBtn" Content="Repeat"
+                <RadioButton x:Name="repeatTimesRBtn" Content="  Repeat"
                     Grid.Row="1"
                     VerticalAlignment="Center"
-                    Margin="203,10,-4,54"
+                    Margin="225,9,-4,54"
                     FontSize="13"
                     GroupName="Repeat"/>
                 <Label Content="Times"
@@ -504,17 +545,17 @@
                     HorizontalAlignment="Right" 
                    
                     Grid.Row="1"
-                    Margin="0,5,21,45"/>
+                    Margin="0,0,43,47"/>
                 <TextBox x:Name="repeatTimesBox" Text="0"
                     Width="50"
-                    Margin="274,3,66,47"
+                    Margin="299,2,91,48"
                     Grid.Row="1"
                     MaxLength="0"/>
 
-                <RadioButton x:Name="repeatForeverRBtn" Content="Repeat Until Stopped"
+                <RadioButton x:Name="repeatForeverRBtn" Content="  Repeat Until Stopped"
                     Grid.Row="1"
                     VerticalAlignment="Center"
-                    Margin="203,51,-4,13"
+                    Margin="225,48,-4,16"
                     FontSize="13"
                     IsChecked="true"
                     GroupName="Repeat"/>
@@ -524,7 +565,7 @@
                     GroupName="Location"
                     Grid.Row="2"
                     VerticalAlignment="Center"
-                    Margin="22,22,0,22" 
+                    Margin="22,0,0,0" 
                     IsChecked="True"
                     FontSize="13"/>
 
@@ -532,8 +573,18 @@
                     GroupName="Location"
                     Grid.Row="2"
                     VerticalAlignment="Center"
-                    Margin="203,22,-4,22"
+                    Margin="191,0,17,0"
                     FontSize="13"/>
+
+                <Button x:Name="getCoordsBtn" 
+                    Content="Get"
+                    Foreground="black"
+                    HorizontalAlignment="Left"
+                    Grid.Row="2"
+                    VerticalAlignment="Center"
+                    Height="30" Width="56"
+                    Background="LightGray"
+                    Margin="214,0,0,0" Click="getCoordsBtn_Click"/>
 
                 <Label Content="X"
                     FontSize="15"
@@ -542,12 +593,12 @@
                     HorizontalAlignment="Right" 
                    
                     Grid.Row="2"
-                    Margin="0,15,146,15"/>
+                    Margin="0,0,146,0"/>
 
                 <TextBox x:Name="xBox" Text="0"
                     Width="50"
-                    Margin="245,15,95,15"
-                    Grid.Row="2"/>
+                    Margin="294,0,96,0"
+                    Grid.Row="2" VerticalAlignment="Center"/>
 
                 <Label Content="Y"
                     FontSize="15"
@@ -555,13 +606,13 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Right" 
                    
-                    Grid.Row="2"
-                    Margin="0,15,72,15"/>
+                    Grid.Row="2" Margin="0,0,72,0"
+                    />
 
                 <TextBox x:Name="yBox" Text="0"
                     Width="50"
-                    Margin="319,15,21,15"
-                    Grid.Row="2"/>
+                    Margin="368,0,22,0"
+                    Grid.Row="2" RenderTransformOrigin="0.942,0.572" VerticalAlignment="Center"/>
 
                 <!-- 3 -->
                 <Button x:Name="startBtn" 
@@ -570,7 +621,7 @@
                     HorizontalAlignment="Left"
                     Grid.Row="3"
                     VerticalAlignment="Top"
-                    Height="50" Width="180"
+                    Height="50" Width="205"
                     Background="#1494e3"
                     Margin="10,10,0,0" Click="startBtn_Click"/>
 
@@ -580,9 +631,9 @@
                     HorizontalAlignment="Left"
                     Grid.Row="3"
                     VerticalAlignment="Top"
-                    Height="50" Width="180"
+                    Height="50" Width="205"
                     Background="#c43c35"
-                    Margin="199,10,0,0"
+                    Margin="225,10,0,0"
                     Click="stopBtn_Click"
                     IsEnabled="False"/>
 
@@ -592,22 +643,24 @@
                     HorizontalAlignment="Left"
                     Grid.Row="3"
                     VerticalAlignment="Top"
-                    Height="50" Width="180"
+                    Height="50" Width="205"
                     Background="#808080"
                     Margin="10,70,0,0" Click="changeHotkeyBtn_Click"/>
 
                 <Button x:Name="toggleTopmostBtn" 
-                    Content="Toggle Topmost (Off)"
+                    Content="Toggle Topmost (On)"
                     Foreground="White"
                     HorizontalAlignment="Left"
                     Grid.Row="3"
                     VerticalAlignment="Top"
-                    Height="50" Width="180"
+                    Height="50" Width="205"
                     Background="#808080"
-                    Margin="199,70,0,0"
+                    Margin="225,70,0,0"
                     Click="toggleTopmostBtn_Click"/>
+
             </Grid>
         </Grid>
 
     </Border>
 </Window>
+

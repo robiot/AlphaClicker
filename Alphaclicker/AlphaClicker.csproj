@@ -58,7 +58,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GetCursorPos.xaml.cs">
+      <DependentUpon>GetCursorPos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Registry.cs" />
+    <Compile Include="WinApi.cs" />
+    <Page Include="GetCursorPos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ChangeHotkey.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -4,9 +4,9 @@
     public enum VK : int
     {
         // Commented out because it's not used
-        /*
+        
         VK_LBUTTON = 0x01,
-        VK_RBUTTON = 0x02,
+        /*VK_RBUTTON = 0x02,
         VK_CANCEL = 0x03,
         VK_MBUTTON = 0x04,
         //
@@ -32,9 +32,9 @@
         VK_FINAL = 0x18,
         VK_HANJA = 0x19,
         VK_KANJI = 0x19,
-        //
+        */
         VK_ESCAPE = 0x1B,
-        //
+        /*
         VK_CONVERT = 0x1C,
         VK_NONCONVERT = 0x1D,
         VK_ACCEPT = 0x1E,

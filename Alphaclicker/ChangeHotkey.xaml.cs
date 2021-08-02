@@ -73,6 +73,7 @@ namespace AlphaClicker
                             keyBox.AppendText(((char)i).ToString());
                             startBtn.IsEnabled = true;
                             key2 = i;
+                            okBtn.IsEnabled = true;
                             break;
                         }
                         /* If function key */
@@ -81,6 +82,8 @@ namespace AlphaClicker
                             keyBox.AppendText(CodeToSpecialKey(i));
                             startBtn.IsEnabled = true;
                             key2 = i;
+
+                            okBtn.IsEnabled = true;
                             break;
                         }
                         /* If any extra keys (shift, ctrl, alt) */
@@ -103,6 +106,7 @@ namespace AlphaClicker
 
         private void startBtn_Click(object sender, RoutedEventArgs e)
         {
+            okBtn.IsEnabled = false;
             hasSpecKey = false;
             startBtn.IsEnabled = false;
             keyBox.Clear();
