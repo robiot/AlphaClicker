@@ -532,7 +532,7 @@
                     <ComboBoxItem>Double</ComboBoxItem>
                 </ComboBox>
 
-                <RadioButton x:Name="repeatTimesRBtn" Content="  Repeat"
+                <RadioButton x:Name="repeatTimesRBtn" Content=" Repeat"
                     Grid.Row="1"
                     VerticalAlignment="Center"
                     Margin="225,9,-4,54"
@@ -548,11 +548,11 @@
                     Margin="0,0,43,47"/>
                 <TextBox x:Name="repeatTimesBox" Text="0"
                     Width="50"
-                    Margin="299,2,91,48"
+                    Margin="300,2,90,48"
                     Grid.Row="1"
                     MaxLength="0"/>
 
-                <RadioButton x:Name="repeatForeverRBtn" Content="  Repeat Until Stopped"
+                <RadioButton x:Name="repeatForeverRBtn" Content=" Repeat Until Stopped"
                     Grid.Row="1"
                     VerticalAlignment="Center"
                     Margin="225,48,-4,16"
