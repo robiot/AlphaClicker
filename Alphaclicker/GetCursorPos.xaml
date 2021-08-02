@@ -18,7 +18,7 @@
         <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard>
                 <Storyboard>
-                    <DoubleAnimation Duration="00:00:00.6" Storyboard.TargetProperty="Opacity" From="0" To="1" />
+                    <DoubleAnimation Duration="00:00:00.5" Storyboard.TargetProperty="Opacity" From="0" To="1" />
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
