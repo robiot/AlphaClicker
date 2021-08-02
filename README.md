@@ -17,7 +17,7 @@
 
 :thinking: What is this?
 ------------------
-<img src="https://raw.githubusercontent.com/robiot/AlphaClicker/main/.github/Images/design-example.png" />
+<img src="https://raw.githubusercontent.com/robiot/AlphaClicker/main/.github/Images/alphaclicker.png" />
 
 Alpha Clicker is a autoclicker for Windows with a **modern user interface**. :art:
 
