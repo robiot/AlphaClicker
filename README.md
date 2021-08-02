@@ -8,7 +8,7 @@
   <img alt="GitHub Latest Release" src="https://img.shields.io/github/v/tag/robiot/AlphaClicker?label=Latest%20Release">
   <img alt="GitHub Total Downloads" src="https://img.shields.io/github/downloads/robiot/AlphaClicker/total?label=GitHub%20Downloads">
   <img alt="GitHub Total Issues" src="https://img.shields.io/github/issues/robiot/AlphaClicker?label=Issues">  
-  <img alt="GitHub Total Pull Requests" src="https://img.shields.io/github/issues-pr/robiot/AlphaClicker?label=Open Pull Requests">
+  <img alt="GitHub Total Pull Requests" src="https://img.shields.io/github/issues-pr-raw/robiot/AlphaClicker?label=Open%20Pull%20Requests">
   
   <br>
   <hr>
@@ -36,6 +36,7 @@ Just you search "Autoclicker" and you will get a bunch of ancient autoclickers (
 ### :gear: Functionality:
 It basically works just like any other autoclicker.
  - Change Click Interval
+ - Click At A Random Interval
  - Change Mouse Button
  - Change Click Type (Single / Double)
  - Repeat Forever or Repeat Specified times
