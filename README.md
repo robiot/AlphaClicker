@@ -11,7 +11,7 @@
   <img alt="GitHub Total Pull Requests" src="https://img.shields.io/github/issues-pr-raw/robiot/AlphaClicker?label=Open%20Pull%20Requests">
   
   <br>
-  <a href="https://github.com/robiot/AlphaClicker/releases/latest/download/AlphaClicker.exe">Download Here</a>
+  <a href="https://github.com/robiot/AlphaClicker/releases/latest/download/AlphaClicker.exe">Download Latest</a>
   <hr>
 </div>
 <br>
