@@ -61,6 +61,12 @@ namespace AlphaClicker
         private int key2 = -1;
         private void hotkeyWindow_PreviewKeyDown(object sender, KeyEventArgs e)
         {
+            // Not good way of doing it, but it works.
+            if (keyBox.Text == "Press Keys")
+            {
+                keyBox.Clear();
+            }
+
             if (!startBtn.IsEnabled)
             {
                 for (int i = 8; i < 123; i++)
@@ -109,7 +115,7 @@ namespace AlphaClicker
             okBtn.IsEnabled = false;
             hasSpecKey = false;
             startBtn.IsEnabled = false;
-            keyBox.Clear();
+            keyBox.Text = "Press Keys";
         }
 
         private void okBtn_Click(object sender, RoutedEventArgs e)
@@ -131,7 +137,6 @@ namespace AlphaClicker
         private void hotkeyWindow_Loaded(object sender, RoutedEventArgs e)
         {
             keyBox.Text = Keybinds.keyBinding;
-            ((MainWindow)this.Owner).keyEnabled = false;
         }
 
         private void hotkeyWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)

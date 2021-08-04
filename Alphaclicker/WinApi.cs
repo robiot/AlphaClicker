@@ -28,9 +28,6 @@ namespace AlphaClicker
         [DllImport("user32.dll")]
         public static extern int SetCursorPos(int x, int y);
 
-        [DllImport("user32.dll", EntryPoint = "SetWindowPos")]
-        public static extern IntPtr SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int Y, int cx, int cy, int wFlags);
-
         // Get custom coords
         [DllImport("user32.dll")]
         public static extern bool GetCursorPos(out POINT lpPoint);

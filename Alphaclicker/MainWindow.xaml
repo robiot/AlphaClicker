@@ -26,333 +26,9 @@
         </EventTrigger>
     </Window.Triggers>
 
-    <Window.Resources>
-        <Style TargetType="Ellipse">
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation
-                                    Duration="0:0:0.1"
-                                    Storyboard.TargetProperty="RenderTransform.ScaleX"
-                                    To="1.05">
-                            </DoubleAnimation>
-                            <DoubleAnimation
-                                    Duration="0:0:0.2"
-                                    Storyboard.TargetProperty="RenderTransform.ScaleY"
-                                    To="1.05">
-                            </DoubleAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-
-                <EventTrigger RoutedEvent="MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation
-                                    Duration="0:0:0.1"
-                                    Storyboard.TargetProperty="RenderTransform.ScaleX"
-                                    To="1.0">
-                            </DoubleAnimation>
-                            <DoubleAnimation
-                                    Duration="0:0:0.2"
-                                    Storyboard.TargetProperty="RenderTransform.ScaleY"
-                                    To="1.0">
-                            </DoubleAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- This style is used for buttons, to remove the WPF default 'animated' mouse over effect -->
-        <Style TargetType="Button">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Name="border" 
-     
-                        CornerRadius="10" 
-                        Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <EventTrigger RoutedEvent="MouseEnter">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Duration="0:0:0.1"
-                                            Storyboard.TargetProperty="Opacity"
-                                            To="0.9">
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="MouseLeave">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Duration="0:0:0.1"
-                                            Storyboard.TargetProperty="Opacity"
-                                            To="1">
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="RadioButton">
-            <Setter Property="SnapsToDevicePixels" Value="true"/>
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type RadioButton}">
-                        <BulletDecorator Background="Transparent">
-                            <BulletDecorator.Bullet>
-                                <Grid Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" 
-                                        Height="{Binding ActualHeight, ElementName=PART_Content}" >
-                                    <Ellipse x:Name="Border"  
-                                        
-                                        StrokeThickness="2"
-                                        Margin="-1"
-                                        Stroke="gray" />
-                                    <Ellipse x:Name="CheckMark"
-                                        Margin="3"
-                                        Fill="#3b6cec" />
-                                </Grid>
-                            </BulletDecorator.Bullet>
-                            <ContentPresenter Name="PART_Content"
-                                Margin="4,0,0,0"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left"
-                                RecognizesAccessKey="True"/>
-                        </BulletDecorator>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="false">
-                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
-                            </Trigger>
-
-                            <Trigger Property="IsChecked" Value="true">
-                                <Setter TargetName="Border" Property="Stroke" Value="#3b6cec"/>
-                            </Trigger>
-
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="Border" Property="Fill" Value="lightgray" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-
-        <Style TargetType="TextBox">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="MinHeight" Value="20"/>
-            <Setter Property="TextWrapping" Value="NoWrap" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="Height" Value="30" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Background" Value="lightgray" />
-            <Setter Property="MaxLength" Value="5" />
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-
-                        <Border Background="{TemplateBinding Background}" 
-                x:Name="Bd" BorderBrush="Black"
-                BorderThickness="{TemplateBinding BorderThickness}" HorizontalAlignment="Stretch" CornerRadius="10"
->
-                            <ScrollViewer x:Name="PART_ContentHost"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
-                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-                            </Trigger>
-
-                            <Trigger Property="Height" Value="Auto">
-                                <Setter Property="MinHeight" Value="20"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ToggleButton">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="32" />
-                            </Grid.ColumnDefinitions>
-                            <Border
-                          x:Name="Border"
-                          Grid.ColumnSpan="2"
-                          CornerRadius="8"
-                          Background="{TemplateBinding Background}"
-                          BorderBrush="#F6F6F6"
-                          BorderThickness="1" 
-                        />
-
-                            <Path
-                            x:Name="Arrow"
-                            Grid.Column="1"    
-                            Fill="{TemplateBinding Foreground}"
-                            Stroke="{TemplateBinding Foreground}"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Data="M 0 0 L 4 4 L 8 0 Z"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <ControlTemplate x:Key="ComboBoxTextBox" TargetType="TextBox">
-            <Border x:Name="PART_ContentHost" Focusable="True" />
-        </ControlTemplate>
-
-        <Style x:Key="theComboBox" TargetType="{x:Type ComboBox}">
-            <Setter Property="Foreground" Value="#333" />
-            <Setter Property="BorderBrush" Value="Gray" />
-            <Setter Property="Background" Value="LightGray" />
-            <Setter Property="SnapsToDevicePixels" Value="true"/>
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
-            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
-            <Setter Property="FontSize" Value="13" />
-            <Setter Property="MinHeight" Value="30"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ComboBox">
-                        <Grid>
-                            <ToggleButton
-                            Cursor="Hand"
-                            Name="ToggleButton"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            Background="{TemplateBinding Background}"
-                            Foreground="{TemplateBinding Foreground}"
-                            Style="{StaticResource ComboBoxToggleButton}"
-                            Grid.Column="2"
-                            Focusable="false"
-                            IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
-                            ClickMode="Press"/>
-
-                            <ContentPresenter
-                            Name="ContentSite"
-                            IsHitTestVisible="False"
-                            Content="{TemplateBinding SelectionBoxItem}"
-                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                            Margin="10,3,30,3"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left" />
-                            <TextBox x:Name="PART_EditableTextBox"
-                            Style="{x:Null}"
-                            Template="{StaticResource ComboBoxTextBox}"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="3,3,23,3"
-                            Focusable="True"                               
-                            Visibility="Hidden"
-                            IsReadOnly="{TemplateBinding IsReadOnly}"/>
-                            <Popup
-                            Name="Popup"
-                            Placement="Bottom"
-                            IsOpen="{TemplateBinding IsDropDownOpen}"
-                            AllowsTransparency="True"
-                            Focusable="False"
-                            PopupAnimation="Slide">
-                                <Grid
-                              Name="DropDown"
-                              SnapsToDevicePixels="True"               
-                              MinWidth="{TemplateBinding ActualWidth}"
-                              MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                    <Border
-                                    CornerRadius="8"
-                                    x:Name="DropDownBorder"
-                                    Background="White"
-                                    BorderThickness="1"
-                                    BorderBrush="#F6F6F6"
-                                    />
-                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
-                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
-                                    </ScrollViewer>
-                                </Grid>
-                            </Popup>
-
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="HasItems" Value="false">
-                                <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
-                            </Trigger>
-                            <Trigger Property="IsGrouping" Value="true">
-                                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
-                            </Trigger>
-                            <Trigger Property="IsEditable" Value="true">
-                                <Setter Property="IsTabStop" Value="false"/>
-                                <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
-                                <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="theComboBoxItem" TargetType="{x:Type ComboBoxItem}">
-            <Setter Property="SnapsToDevicePixels" Value="true" />
-            <Setter Property="HorizontalAlignment" Value="Stretch" />
-            <Setter Property="VerticalAlignment" Value="Stretch" />
-            <Setter Property="FontSize" Value="13" />
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ComboBoxItem">
-                        <Border
-                        Name="Border"
-                        Padding="5"
-                        Margin="2"
-                        BorderThickness="2,0,0,0"
-                        CornerRadius="0"
-                        Background="Transparent"
-                        BorderBrush="Transparent">
-                            <TextBlock TextAlignment="Left">
-                            <ContentPresenter />
-                            </TextBlock>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsHighlighted" Value="true">
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#40a9ff"/>
-                                <Setter TargetName="Border" Property="Background" Value="#d6edff"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-    </Window.Resources>
-
-    <!-- #202020 -->
     <Border Margin="10"
         CornerRadius="15" 
-        Background="#F6F6F6" 
+        Background="{DynamicResource WindowBackgroundColor}" 
         BorderBrush="Gray" 
         BorderThickness="0.3">
 
@@ -377,22 +53,31 @@
                    Margin="0,0,0,0"/>
 
             <!-- X button -->
-            <Ellipse x:Name="closeButton" Fill="#FF605C"
+            <Ellipse x:Name="closeButton" 
+                    Fill="#FF605C"
+                    Style="{StaticResource GrowOnHover}"
                     Grid.Row="0"
                     Height="20" Width="20"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Center" Margin="0,0,10,0" MouseLeftButtonDown="closeButton_MouseLeftButtonDown">
+                    VerticalAlignment="Center"
+                    Margin="0,0,10,0"
+                    MouseLeftButtonDown="closeButton_MouseLeftButtonDown">
+
                 <Ellipse.RenderTransform>
                     <ScaleTransform ScaleX="1.0" ScaleY="1.0" />
                 </Ellipse.RenderTransform>
             </Ellipse>
 
             <!-- Minimize button -->
-            <Ellipse x:Name="minimizeButton" Fill="#FFBD33"
+            <Ellipse x:Name="minimizeButton"
+                    Fill="#FFBD33"
+                    Style="{StaticResource GrowOnHover}"
                     Grid.Row="0"
                     Height="20" Width="20"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Center" Margin="0,0,37,0" MouseLeftButtonDown="minimizeButton_MouseLeftButtonDown">
+                    VerticalAlignment="Center"
+                    Margin="0,0,37,0"
+                    MouseLeftButtonDown="minimizeButton_MouseLeftButtonDown">
 
                 <Ellipse.RenderTransform>
                     <ScaleTransform ScaleX="1.0" ScaleY="1.0" />
@@ -436,7 +121,7 @@
                     FontSize="13"
 
                     HorizontalAlignment="Right"
-                    Margin="0,0,200,43" Height="46" VerticalAlignment="Bottom"/>
+                    Margin="0,0,200,59" Height="29" VerticalAlignment="Bottom"/>
                 <TextBox x:Name="secondsBox" Text="0"
                     Width="50"
                     Margin="248,0,142,59" VerticalAlignment="Bottom"/>
@@ -444,17 +129,17 @@
                     FontSize="13"
                    
                     HorizontalAlignment="Right"
-                    Margin="0,0,109,43" Height="46" VerticalAlignment="Bottom"/>
+                    Margin="0,0,109,59" Height="29" VerticalAlignment="Bottom"/>
                 <TextBox x:Name="millisecsBox" Text="100"
                     Width="50"
                     Margin="339,0,51,59" AutomationProperties.IsRequiredForForm="True" Height="30" VerticalAlignment="Bottom"/>
                 <Label Content="Millis."
                     FontSize="13"
                     HorizontalAlignment="Right"
-                    Margin="0,0,10,60" Height="27" VerticalAlignment="Bottom"/>
+                    Margin="0,0,10,59" Height="27" VerticalAlignment="Bottom"/>
 
                 <RadioButton x:Name="randomIntervalMode"
-                    Content="Random Click Interval Between"
+                    Content=" Random Click Interval Between"
                     Grid.Row="0"
                     VerticalAlignment="Top"
  
@@ -470,10 +155,8 @@
 
                 <Label Content="Secs"
                     FontSize="13"
-                   
-                    VerticalAlignment="Top"
                     HorizontalAlignment="Right"
-                    Margin="0,54,109,0"/>
+                    Margin="0,54,109,0" Height="27" VerticalAlignment="Top"/>
 
                 <TextBox x:Name="randomSecs2Box"
                     Text="0.2"
@@ -561,7 +244,7 @@
                     GroupName="Repeat"/>
 
                 <!-- 2 -->
-                <RadioButton x:Name="currentLocationCBtn" Content="Current Location"
+                <RadioButton x:Name="currentLocationCBtn" Content=" Current Location"
                     GroupName="Location"
                     Grid.Row="2"
                     VerticalAlignment="Center"
@@ -578,13 +261,13 @@
 
                 <Button x:Name="getCoordsBtn" 
                     Content="Get"
-                    Foreground="black"
                     HorizontalAlignment="Left"
                     Grid.Row="2"
                     VerticalAlignment="Center"
                     Height="30" Width="56"
-                    Background="LightGray"
-                    Margin="214,0,0,0" Click="getCoordsBtn_Click"/>
+                    Background="{DynamicResource DarkControls2}"
+                    Margin="214,0,0,0"
+                    Click="getCoordsBtn_Click"/>
 
                 <Label Content="X"
                     FontSize="15"
@@ -606,16 +289,16 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Right" 
                    
-                    Grid.Row="2" Margin="0,0,72,0"
-                    />
+                    Grid.Row="2" Margin="0,0,72,0"/>
 
                 <TextBox x:Name="yBox" Text="0"
                     Width="50"
                     Margin="368,0,22,0"
-                    Grid.Row="2" RenderTransformOrigin="0.942,0.572" VerticalAlignment="Center"/>
+                    Grid.Row="2"
+                    VerticalAlignment="Center"/>
 
                 <!-- 3 -->
-                <Button x:Name="startBtn" 
+                <Button x:Name="startBtn"
                     Content="Start (F6)"
                     Foreground="White"
                     HorizontalAlignment="Left"
@@ -623,7 +306,8 @@
                     VerticalAlignment="Top"
                     Height="50" Width="205"
                     Background="#1494e3"
-                    Margin="10,10,0,0" Click="startBtn_Click"/>
+                    Margin="10,10,0,0"
+                    Click="startBtn_Click"/>
 
                 <Button x:Name="stopBtn" 
                     Content="Stop (F6)"
@@ -639,24 +323,23 @@
 
                 <Button x:Name="changeHotkeyBtn" 
                     Content="Change Hotkey"
-                    Foreground="White"
+                    Foreground="{DynamicResource WindowTextColor2}"
                     HorizontalAlignment="Left"
                     Grid.Row="3"
                     VerticalAlignment="Top"
                     Height="50" Width="205"
-                    Background="#808080"
-                    Margin="10,70,0,0" Click="changeHotkeyBtn_Click"/>
+                    Margin="10,70,0,0"
+                    Click="changeHotkeyBtn_Click"/>
 
-                <Button x:Name="toggleTopmostBtn" 
-                    Content="Toggle Topmost (On)"
-                    Foreground="White"
+                <Button x:Name="windowSettingsBtn" 
+                    Content="Window Settings"
+                    Foreground="{DynamicResource WindowTextColor2}"
                     HorizontalAlignment="Left"
                     Grid.Row="3"
                     VerticalAlignment="Top"
                     Height="50" Width="205"
-                    Background="#808080"
                     Margin="225,70,0,0"
-                    Click="toggleTopmostBtn_Click"/>
+                    Click="windowSettingsBtn_Click"/>
 
             </Grid>
         </Grid>

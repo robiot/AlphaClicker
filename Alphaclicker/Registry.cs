@@ -41,5 +41,44 @@ namespace AlphaClicker
                 // Ignore this exception
             }
         }
+
+        public static void SetWindowSettings(bool topmostValue)
+        {
+            RegistryKey regKey = GetRegistryKey("Software\\AlphaClicker");
+            regKey.SetValue("theme", ThemesController.CurrentTheme);
+            regKey.SetValue("topmost", topmostValue);
+        }
+
+        public static string GetTheme()
+        {
+            RegistryKey regKey = GetRegistryKey("Software\\AlphaClicker");
+
+            try
+            {
+                return regKey.GetValue("theme").ToString();
+            }
+            catch
+            { }
+
+            return "";
+        }
+
+        public static bool GetTopmost()
+        {
+            RegistryKey regKey = GetRegistryKey("Software\\AlphaClicker");
+
+            try
+            {
+                if (regKey.GetValue("topmost").ToString() == "True")
+                    return true;
+                else
+                    return false;
+                
+            }
+            catch
+            { }
+
+            return true;
+        }
     }
 }
