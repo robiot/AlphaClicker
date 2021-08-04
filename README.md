@@ -11,13 +11,14 @@
   <img alt="GitHub Total Pull Requests" src="https://img.shields.io/github/issues-pr-raw/robiot/AlphaClicker?label=Open%20Pull%20Requests">
   
   <br>
+  <a href="https://github.com/robiot/AlphaClicker/releases/latest/download/AlphaClicker.exe">Download Here</a>
   <hr>
 </div>
 <br>
 
 :thinking: What is this?
 ------------------
-<img src="https://raw.githubusercontent.com/robiot/AlphaClicker/main/.github/Images/alphaclicker.png" />
+<img src="https://raw.githubusercontent.com/robiot/AlphaClicker/main/.github/Images/alphaclicker.png" /><img src="https://raw.githubusercontent.com/robiot/AlphaClicker/main/.github/Images/alphaclicker-dark.png" />
 
 Alpha Clicker is a autoclicker for Windows with a **modern user interface**. :art:
 
@@ -42,9 +43,10 @@ It basically works just like any other autoclicker.
  - Repeat Forever or Repeat Specified times
  - Click At Current Mouse Location or At Given Coordinates
  - Toggle Topmost
+ - Change Theme
  - Change Hotkey
  
-:book: Full Installation Guide
+:book: How to install
 ------------------
  1. Go to the [Releases](https://github.com/robiot/AlphaClicker/releases/latest) tab.
  2. Click AlphaClicker.exe to start download
