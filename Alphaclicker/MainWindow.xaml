@@ -14,7 +14,8 @@
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Loaded="mainWindow_Loaded"
         Closing="mainWindow_Closing"
-        Topmost="True">
+        Topmost="True"
+        KeyDown="Window_KeyDown">
 
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">

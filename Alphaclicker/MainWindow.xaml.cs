@@ -278,6 +278,15 @@ namespace AlphaClicker
             DragMove();
         }
 
+        // To disable annoying alt
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.System)
+            {
+                e.Handled = true;
+            }
+        }
+
         /* Top Bar */
         private void closeButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
