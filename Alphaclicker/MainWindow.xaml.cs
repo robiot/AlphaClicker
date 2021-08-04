@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-
+using System.Windows.Resources;
 
 namespace AlphaClicker
 {
@@ -255,6 +255,10 @@ namespace AlphaClicker
 
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            if (AlphaRegistry.GetTheme() == "Dark")
+                ThemesController.SetTheme(ThemesController.ThemeTypes.Dark);
+            this.Topmost = AlphaRegistry.GetTopmost();
+
             Thread keyhandler = new Thread(KeyHandler);
             keyhandler.Start();
 
@@ -305,24 +309,19 @@ namespace AlphaClicker
 
         private void changeHotkeyBtn_Click(object sender, RoutedEventArgs e)
         {
+            keyEnabled = false;
             ChangeHotkey win = new ChangeHotkey();
             win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             win.Owner = this;
             win.ShowDialog();
         }
 
-        private void toggleTopmostBtn_Click(object sender, RoutedEventArgs e)
+        private void windowSettingsBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (this.Topmost)
-            {
-                toggleTopmostBtn.Content = "Toggle Topmost (Off)";
-                this.Topmost = false;
-            }
-            else
-            {
-                toggleTopmostBtn.Content = "Toggle Topmost (On)";
-                this.Topmost = true;
-            }
+            WindowSettings win = new WindowSettings();
+            win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            win.Owner = this;
+            win.ShowDialog();
         }
     }
 }

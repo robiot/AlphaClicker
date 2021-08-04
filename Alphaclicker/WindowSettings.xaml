@@ -1,4 +1,4 @@
-﻿<Window x:Name="hotkeyWindow" x:Class="AlphaClicker.ChangeHotkey"
+﻿<Window x:Name="windowSettings" x:Class="AlphaClicker.WindowSettings"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,10 +7,12 @@
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
         WindowStyle="None"
-        Title="Alpha Clicker"
-        Height="155" Width="300"
+        Title="Alpha Clicker Settings"
+        Height="133" Width="300"
         Background="{x:Null}"
-        AllowsTransparency="True" MouseLeftButtonDown="hotkeyWindow_MouseLeftButtonDown" PreviewKeyDown="hotkeyWindow_PreviewKeyDown" Loaded="hotkeyWindow_Loaded" Closing="hotkeyWindow_Closing">
+        AllowsTransparency="True"
+        MouseLeftButtonDown="windowSettings_MouseLeftButtonDown"
+        Closing="windowSettings_Closing" Loaded="windowSettings_Loaded">
 
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
@@ -41,7 +43,7 @@
             </Grid.RowDefinitions>
 
 
-            <Label x:Name="windowTitle" Content="Hotkey Changer"
+            <Label x:Name="windowTitle" Content="Settings"
                    FontSize="15"
                    
                    VerticalAlignment="Center"
@@ -67,47 +69,44 @@
 
             <Grid Grid.Row="1" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="27"></RowDefinition>
+                    <RowDefinition Height="27"></RowDefinition>
+
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Button x:Name="startBtn" 
-                    Content="Start"
-                    Foreground="White"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Height="36" Width="120"
-                    Background="#05b41c"
-                    Margin="10,0,0,0" Click="startBtn_Click"/>
-
-                <TextBox x:Name="keyBox"
+                <CheckBox x:Name="darkThemeSwitch"
                     HorizontalAlignment="Right"
-                    Height="35" Width="120"
-                    IsReadOnly="true"
+                    Height="25"
                     VerticalAlignment="Center"
-                    Margin="0,0,10,0"/>
+                    Margin="0,0,30,0" Checked="darkThemeSwitch_Checked" Unchecked="darkThemeSwitch_Unchecked"/>
 
-
-                <Button x:Name="okBtn"
-                    Content="Ok"
-                    Foreground="{DynamicResource WindowTextColor2}"
-                    HorizontalAlignment="Center"
+                <Label Content="Dark Theme"
+                    FontSize="14"
+                   
                     VerticalAlignment="Center"
-                    Height="36" Width="80"
-                    Background="{DynamicResource DarkControls}"
+                    HorizontalAlignment="Left" 
+                    VerticalContentAlignment="Center"
+                    Height="26"
+                    Width="94"
+                    Margin="30,0,0,1"/>
+
+                <CheckBox x:Name="topMostSwitch"
+                    HorizontalAlignment="Right"
+                    Height="25"
                     Grid.Row="1"
-                    Margin="56,4,144,5"
-                    Click="okBtn_Click"/>
-                <Button x:Name="cancelBtn"
-                    Content="Cancel"
-                    Foreground="{DynamicResource WindowTextColor2}"
-                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Height="36" Width="82"
-                    Background="{DynamicResource DarkControls}"
-                    Grid.Row="1" 
-                    Margin="144,4,54,5"
-                    Click="cancelBtn_Click"/>
+                    Margin="0,0,30,0" Checked="topMostSwitch_Checked" Unchecked="topMostSwitch_Unchecked"/>
+
+                <Label Content="TopMost"
+                    FontSize="14"
+                    Grid.Row="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left" 
+                    VerticalContentAlignment="Center"
+                    Height="27"
+                    Width="94"
+                    Margin="30,0,0,0"/>
 
             </Grid>
         </Grid>

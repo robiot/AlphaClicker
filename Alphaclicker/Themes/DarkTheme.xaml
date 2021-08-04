@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="WindowBackgroundColor"  Color="#231e2a" />
+    <SolidColorBrush x:Key="WindowTextColor"        Color="#b6b5b9" />
+    <SolidColorBrush x:Key="WindowTextColor2"       Color="#b6b5b9" />
+    <SolidColorBrush x:Key="Controls"               Color="#413d47" />
+    <SolidColorBrush x:Key="DarkControls"           Color="#332e39" />
+    <SolidColorBrush x:Key="DarkControls2"          Color="#332e39" />
+    <SolidColorBrush x:Key="LightControls"          Color="#544f5c" />
+    
+    
+</ResourceDictionary>
