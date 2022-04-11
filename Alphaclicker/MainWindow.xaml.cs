@@ -148,6 +148,10 @@ namespace AlphaClicker
                     }
                     else
                     {
+                        if (millisecsBox.Text == "0")
+                        {
+                            millisecsBox.Text = "1";
+                        }
                         sleep = ToInt(millisecsBox.Text)
                         + ToInt(secondsBox.Text) * 1000
                         + ToInt(minsBox.Text) * 60000

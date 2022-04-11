@@ -85,7 +85,7 @@
                     Height="35" Width="120"
                     IsReadOnly="true"
                     VerticalAlignment="Center"
-                    Margin="0,0,10,0"/>
+                    Margin="0,0,10,0" TextChanged="keyBox_TextChanged"/>
 
 
                 <Button x:Name="okBtn"
