@@ -28,6 +28,38 @@ namespace AlphaClicker
         {
             switch (key)
             {
+                case 96:
+                    return "NUMPAD0";
+                case 97:
+                    return "NUMPAD1";
+                case 98:
+                    return "NUMPAD2";
+                case 99:
+                    return "NUMPAD3";
+                case 100:
+                    return "NUMPAD4";
+                case 101:
+                    return "NUMPAD5";
+                case 102:
+                    return "NUMPAD6";
+                case 103:
+                    return "NUMPAD7";
+                case 104:
+                    return "NUMPAD8";
+                case 105:
+                    return "NUMPAD9";
+                case 106:
+                    return "MULTIPLY";
+                case 107:
+                    return "ADD";
+                case 108:
+                    return "SEPARATOR";
+                case 109:
+                    return "SUBTRACT";
+                case 110:
+                    return "DECIMAL";
+                case 111:
+                    return "DIVIDE";
                 case 112:
                     return "F1";
                 case 113:
@@ -73,8 +105,19 @@ namespace AlphaClicker
                 {
                     if (WinApi.GetAsyncKeyState(i) > 0)
                     {
+                        /* If any extra keys (shift, ctrl, alt) */
+                        if (i >= 16 && i <= 18)
+                        {
+                            if (hasSpecKey == false)
+                            {
+                                keyBox.AppendText(e.Key.ToString().Replace("Left", "")
+                                    .Replace("Right", "") + " + ");
+                                key1 = i;
+                                hasSpecKey = true;
+                            }
+                        }
                         /* If Char Or Number */
-                        if (i >= 48 && i <= 90)
+                        else if (i >= 48 && i <= 90)
                         {
                             keyBox.AppendText(((char)i).ToString());
                             startBtn.IsEnabled = true;
@@ -82,26 +125,14 @@ namespace AlphaClicker
                             okBtn.IsEnabled = true;
                             break;
                         }
-                        /* If function key */
-                        else if (i >= 112 && i <= 123)
+                        /* If function key, Numpad 0-9 or Add/Subtract around numpad */
+                        else if (i >= 96 && i <= 123)
                         {
                             keyBox.AppendText(CodeToSpecialKey(i));
                             startBtn.IsEnabled = true;
                             key2 = i;
-
                             okBtn.IsEnabled = true;
                             break;
-                        }
-                        /* If any extra keys (shift, ctrl, alt) */
-                        else if (i >= 16 && i <= 18)
-                        {
-                            if (hasSpecKey == false)
-                            {
-                                keyBox.AppendText(e.Key.ToString().Replace("Left", "")
-                                    .Replace("Right", "")+ " + ");
-                                key1 = i;
-                                hasSpecKey = true;
-                            }
                         }
                     }
 
@@ -142,6 +173,11 @@ namespace AlphaClicker
         private void hotkeyWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             ((MainWindow)this.Owner).keyEnabled = true;
+        }
+
+        private void keyBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
         }
     }
 
