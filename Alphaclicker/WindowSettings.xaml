@@ -88,8 +88,8 @@
                     HorizontalAlignment="Left" 
                     VerticalContentAlignment="Center"
                     Height="26"
-                    Width="94"
-                    Margin="30,0,0,1"/>
+                    Width="100"
+                    Margin="30,0,0,0"/>
 
                 <CheckBox x:Name="topMostSwitch"
                     HorizontalAlignment="Right"
@@ -98,14 +98,14 @@
                     VerticalAlignment="Center"
                     Margin="0,0,30,0" Checked="topMostSwitch_Checked" Unchecked="topMostSwitch_Unchecked"/>
 
-                <Label Content="TopMost"
+                <Label Content="Always On Top"
                     FontSize="14"
                     Grid.Row="1"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left" 
                     VerticalContentAlignment="Center"
                     Height="27"
-                    Width="94"
+                    Width="100"
                     Margin="30,0,0,0"/>
 
             </Grid>
