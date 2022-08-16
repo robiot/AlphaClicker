@@ -16,6 +16,8 @@
 </div>
 <br>
 
+## Note: This is the original software, which has been copied, modified and distributed illegaly by other individuals. Please do not use them.
+ 
 :thinking: What is this?
 ------------------
 <img src="https://raw.githubusercontent.com/robiot/AlphaClicker/main/.github/Images/alphaclicker.png" width=400/><img src="https://raw.githubusercontent.com/robiot/AlphaClicker/main/.github/Images/alphaclicker-dark.png" width=400/>
@@ -53,3 +55,5 @@ It basically works just like any other autoclicker.
  
  *Warning: When starting AlphaClicker.exe a Blue Window (Smartscreen) Will Probably Popup.* \
  To Run The Application You Have To Press **More Info** And Then **Run Anyways**.
+
+© robiot
