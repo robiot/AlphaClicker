@@ -33,7 +33,7 @@ Alpha Clicker is a autoclicker for Windows with a **modern user interface**. :ar
 
 ### :art: Design:
 Ever got tired of the old design of your autoclicker. This is for you. \
-Just you search "Autoclicker" and you will get a bunch of ancient autoclickers (which work, but looks anicent).
+Just you search "Autoclicker" and you will get a bunch of ancient autoclickers (which work, but looks ancient).
 <img src="https://raw.githubusercontent.com/robiot/AlphaClicker/main/.github/Images/otherclickers.png" width=500/>
 
 ### :gear: Functionality:
