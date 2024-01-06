@@ -10,7 +10,8 @@
         Title="Alpha Clicker"
         Height="155" Width="300"
         Background="{x:Null}"
-        AllowsTransparency="True" MouseLeftButtonDown="hotkeyWindow_MouseLeftButtonDown" PreviewKeyDown="hotkeyWindow_PreviewKeyDown" Loaded="hotkeyWindow_Loaded" Closing="hotkeyWindow_Closing">
+        AllowsTransparency="True"
+        MouseLeftButtonDown="hotkeyWindow_MouseLeftButtonDown" PreviewKeyDown="hotkeyWindow_PreviewKeyDown" MouseDown="hotkeyWindow_MouseDown" Loaded="hotkeyWindow_Loaded" Closing="hotkeyWindow_Closing">
 
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
