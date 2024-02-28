@@ -88,6 +88,20 @@ namespace AlphaClicker
             return "";
         }
 
+        private string CodeToSpecialMouseButton(int key)
+        {
+            switch (key)
+            {
+                case 4:
+                    return "MMB";
+                case 5:
+                    return "X1";
+                case 6:
+                    return "X2";
+            }
+            return "";
+        }
+
         private bool hasSpecKey = false;
         private int key1 = -1;
         private int key2 = -1;
@@ -136,6 +150,34 @@ namespace AlphaClicker
                         }
                     }
 
+
+                }
+            }
+        }
+
+        private void hotkeyWindow_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!startBtn.IsEnabled)
+            {
+                for (int i = 4; i < 7; i++)
+                {
+                    if (WinApi.GetAsyncKeyState(i) > 0)
+                    {
+                        /* If middle or special mouse button */
+                        if (i >= 4 && i <= 6)
+                        {
+                            if (keyBox.Text == "Press Keys")
+                            {
+                                keyBox.Clear();
+                            }
+
+                            keyBox.AppendText(CodeToSpecialMouseButton(i));
+                            startBtn.IsEnabled = true;
+                            key2 = i;
+                            okBtn.IsEnabled = true;
+                            break;
+                        }
+                    }
 
                 }
             }
