@@ -16,7 +16,7 @@
 </div>
 <br>
 
-## Note: This is the original software, which has been copied, modified and distributed illegaly by other individuals. Please do not use them.
+## Note: This is the original software, which has been copied, modified and distributed illegally by other individuals. Please do not use them.
  
 :thinking: What is this?
 ------------------
@@ -33,7 +33,7 @@ Alpha Clicker is a autoclicker for Windows with a **modern user interface**. :ar
 
 ### :art: Design:
 Ever got tired of the old design of your autoclicker. This is for you. \
-Just you search "Autoclicker" and you will get a bunch of ancient autoclickers (which work, but looks ancient).
+Just you search "Autoclicker" and you will get a bunch of ancient autoclickers (which work, but look ancient).
 <img src="https://raw.githubusercontent.com/robiot/AlphaClicker/main/.github/Images/otherclickers.png" width=500/>
 
 ### :gear: Functionality:
